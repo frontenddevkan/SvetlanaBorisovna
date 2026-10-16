@@ -144,19 +144,7 @@
             padding: 0 20px;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .articles-list h2, .videos-section h2 {
+        .articles-list h2 {
             font-size: 24px;
             margin-bottom: 25px;
             color: #4a6fa5;
@@ -164,107 +152,71 @@
             border-bottom: 2px solid #e4eaf2;
         }
 
-        .article-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .article-card a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .article-card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #4a6fa5;
-        }
-
-        .article-date {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .article-card p:last-child {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .videos-grid {
+        .articles-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             gap: 25px;
         }
 
-        .video-item {
+        .article-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background: #000;
+        .article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
         }
 
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        .article-card > a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
             height: 100%;
-            background: #000;
-            cursor: pointer;
         }
 
-        .video-poster {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
+        .tile-icon {
+            height: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            font-size: 46px;
+            background: linear-gradient(135deg, #6a93cb 0%, #a4bfef 100%);
         }
 
-        .play-button {
-            width: 70px;
-            height: 70px;
-            background: rgba(106, 147, 203, 0.85);
-            border-radius: 50%;
+        .tile-body {
+            padding: 20px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            transition: all 0.3s ease;
+            flex-direction: column;
+            flex: 1;
         }
 
-        .play-button:hover {
-            background: rgba(106, 147, 203, 1);
-            transform: scale(1.1);
-        }
-
-        .video-title {
-            padding: 15px;
-            font-weight: 500;
+        .tile-body h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
             color: #4a6fa5;
+            line-height: 1.4;
+        }
+
+        .tile-body p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .article-date {
+            margin-top: auto;
+            color: #4a6fa5;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: underline;
         }
 
         .footer {
@@ -309,7 +261,7 @@
             <a href="article4/article4.html"><i class="fas fa-envelope"></i>Статья-4</a>
             <a href="article5/article5.html"><i class="fas fa-envelope"></i>Статья-5</a>
 
-            <a href="./egik.html"><i class="fas fa-envelope"></i>Статья-6</a>
+            <a href="./images/egik.html"><i class="fas fa-envelope"></i>Статья-6</a>
             <a href="./skazochnaya-ptitsa.html"><i
                     class="fas fa-feather"></i>Статья-7</a>
         </nav>
@@ -329,147 +281,110 @@
 </section>
 
 <main class="main-content">
-    <div class="content-grid">
-        <!-- Левая колонка - Статьи -->
-        <div class="articles-list">
+    <div class="articles-list">
+        <h2>Последние статьи</h2>
 
-            <h2>Последние статьи</h2>
+        <div class="articles-grid">
 
             <div class="article-card">
                 <a href="./skazochnaya-ptitsa.html">
-                    <h3>🪶 Конспект НОД по аппликации «Сказочная птица»</h3>
-                    <p>Цель: научить детей выполнять аппликацию по образцу, используя цветную бумагу разных цветов. Формировать интерес к данному виду труда.</p>
-                    <p class="article-date" style="text-decoration: underline;">Подробнее</p>
+                    <div class="tile-icon">🪶</div>
+                    <div class="tile-body">
+                        <h3>Конспект НОД по аппликации «Сказочная птица»</h3>
+                        <p>Цель: научить детей выполнять аппликацию по образцу, используя цветную бумагу разных цветов. Формировать интерес к данному виду труда.</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
             <div class="article-card">
                 <a href="./article-kover/article-kover.html">
-                    <h3>🎨 Конспект НОД по пластилинографии «Тюменский ковер»</h3>
-                    <p>Знакомство с историей тюменских ковров, развитие творческих способностей и мелкой моторики через технику пластилинографии.</p>
-                    <a href="./article-kover/article-kover.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">🎨</div>
+                    <div class="tile-body">
+                        <h3>Конспект НОД по пластилинографии «Тюменский ковер»</h3>
+                        <p>Знакомство с историей тюменских ковров, развитие творческих способностей и мелкой моторики через технику пластилинографии.</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
-
 
             <div class="article-card">
                 <a href="./art.html">
-                    <h3>Конспект по «Художественно-эстетическому развитию»</h3>
-                    <img src="./ermitag.png" width="100px">
-                    <p>Приобщение к искусству</p>
-                    <a href="./art.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">🖼️</div>
+                    <div class="tile-body">
+                        <h3>Конспект по «Художественно-эстетическому развитию»</h3>
+                        <p>Приобщение детей к искусству, развитие эстетического вкуса и творческого потенциала.</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
-
             <div class="article-card">
-                <a href="./egik.html">
-                  <h3>Конспект НОД по аппликации «Ёжик»</h3>
-                  <img src="./ej1.png" width="100px">
-                    <p>Беседа о внешности, питании, месте обитания и поведении ежа, о зимовке и ежатах.</p>
-                    <a href="images/egik.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                <a href="./images/egik.html">
+                    <div class="tile-icon">🦔</div>
+                    <div class="tile-body">
+                        <h3>Конспект НОД по аппликации «Ёжик»</h3>
+                        <p>Беседа о внешности, питании, месте обитания и поведении ежа, о зимовке и ежатах.</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
             <div class="article-card">
                 <a href="./article1/article1.html">
-                  <h3 >🎲 Мастер-класс "Лама" - для детей старшей и подготовительной группы</h3>
-                    <p>Инновационные подходы к обучению через игру. Развитие моторики и творческого мышления у дошкольников.</p>
-                    <a href="./article1/article1.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">🎲</div>
+                    <div class="tile-body">
+                        <h3>Мастер-класс «Лама» — для детей старшей и подготовительной группы</h3>
+                        <p>Инновационные подходы к обучению через игру. Развитие моторики и творческого мышления у дошкольников.</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
             <div class="article-card">
                 <a href="./article2/article2.html">
-                    <h3>🎨 Тема "Профессии" в раннем возрасте</h3>
-                    <p>Развитие понимания различных профессий у дошкольников через игровые методики и творческие задания.</p>
-                    <a href="./article2/article2.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">👷</div>
+                    <div class="tile-body">
+                        <h3>Тема «Профессии» в раннем возрасте</h3>
+                        <p>Развитие понимания различных профессий у дошкольников через игровые методики и творческие задания.</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
             <div class="article-card">
                 <a href="./article3/article3.html">
-                    <h3>📖 «Зебра – пешеходный переход</h3>
-                    <p>Формирование представления о дорожном знаке «Пешеходный переход».</p>
-                    <a href="./article3/article3.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">📖</div>
+                    <div class="tile-body">
+                        <h3>«Зебра» — пешеходный переход</h3>
+                        <p>Формирование представления о дорожном знаке «Пешеходный переход».</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
             <div class="article-card">
                 <a href="./article4/article4.html">
-                    <h3>🌳Родительское собрание «Новые технологии в развитии речи»</h3>
-                    <p>«Применение метода синквейн в развитии речи детей
-                        старшего дошкольного возраста»
-                    </p>
-                    <a href="./article4/article4.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">🌳</div>
+                    <div class="tile-body">
+                        <h3>Родительское собрание «Новые технологии в развитии речи»</h3>
+                        <p>«Применение метода синквейн в развитии речи детей старшего дошкольного возраста».</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
 
             <div class="article-card">
                 <a href="./article5/article5.html">
-                    <h3>🧩 квест-игра «Богатырский переполох»</h3>
-                    <p>Конспект проведения подвижных игр на улице в формате квест-игры «Богатырский переполох»</p>
-                    <a href="./article5/article5.html"><p class="article-date" style="text-decoration: underline;">Подробнее</p></a>
+                    <div class="tile-icon">🧩</div>
+                    <div class="tile-body">
+                        <h3>Квест-игра «Богатырский переполох»</h3>
+                        <p>Конспект проведения подвижных игр на улице в формате квест-игры «Богатырский переполох».</p>
+                        <span class="article-date">Подробнее →</span>
+                    </div>
                 </a>
             </div>
-        </div>
 
-        <!-- Правая колонка - Видео -->
-        <div class="videos-section">
-            <h2>Видеоматериалы</h2>
-            <div class="videos-grid">
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%236a93cb'/%3E%3Cpath d='M320 180L250 140v80l70-40z' fill='%23fff'/%3E%3C/svg%3E">
-                            <source src="./pravila.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="video-title">Правила поведения на дороге</div>
-                </div>
-
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%236a93cb'/%3E%3Cpath d='M320 180L250 140v80l70-40z' fill='%23fff'/%3E%3C/svg%3E">
-                            <source src="./prof.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="video-title">Профессии</div>
-                </div>
-
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%236a93cb'/%3E%3Cpath d='M320 180L250 140v80l70-40z' fill='%23fff'/%3E%3C/svg%3E">
-                            <source src="video/teatr.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="video-title">Театр на веранде</div>
-                </div>
-
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%236a93cb'/%3E%3Cpath d='M320 180L250 140v80l70-40z' fill='%23fff'/%3E%3C/svg%3E">
-                            <source src="./oslik.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="video-title">Про ослика</div>
-                </div>
-
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%236a93cb'/%3E%3Cpath d='M320 180L250 140v80l70-40z' fill='%23fff'/%3E%3C/svg%3E">
-                            <source src="video/neposed.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="video-title">Непоседы</div>
-                </div>
-
-                <div class="video-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%236a93cb'/%3E%3Cpath d='M320 180L250 140v80l70-40z' fill='%23fff'/%3E%3C/svg%3E">
-                            <source src="video/kruchu.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="video-title">Кручу-верчу</div>
-                </div>
-            </div>
         </div>
     </div>
 </main>
