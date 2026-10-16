@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Родительское собрание «Новые технологии в развитии речи»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #e0f7fa 0%, #bbdefb 100%);
+            min-height: 100vh;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #37474f;
+        }
+
+        .container {
+            max-width: 1000px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(30, 136, 229, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, #2196f3, #90caf9);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        h1 {
+            color: #1565c0;
+            font-size: 2.4em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(33, 150, 243, 0.2);
+        }
+
+        h2 {
+            color: #1976d2;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bbdefb;
+        }
+
+        h3 {
+            color: #2196f3;
+            margin: 20px 0 12px;
+        }
+
+        .agenda {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .agenda ol {
+            padding-left: 30px;
+        }
+
+        .agenda li {
+            margin: 15px 0;
+            padding-left: 10px;
+            font-weight: 500;
+        }
+
+        .quote {
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            margin: 25px 0;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border-left: 4px solid #64b5f6;
+            font-size: 1.2em;
+            color: #455a64;
+        }
+
+        .problem {
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid #ffcdd2;
+        }
+
+        .method {
+            background: #e8f5e9;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid #c8e6c9;
+        }
+
+        .rules {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid #ffcc80;
+        }
+
+        .rules ol {
+            padding-left: 30px;
+        }
+
+        .rules li {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        .benefits {
+            background: #e0f2f1;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid #80cbc4;
+        }
+
+        .benefits ul {
+            padding-left: 30px;
+            list-style-type: none;
+        }
+
+        .benefits li {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00897b;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .workshop {
+            background: #f3e5f5;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid #ce93d8;
+        }
+
+        .example {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #7b1fa2;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .example-title::before {
+            content: '📝';
+            margin-right: 10px;
+        }
+
+        .group-work {
+            background: #e8eaf6;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid #9fa8da;
+        }
+
+        .solutions {
+            background: #fff9c4;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0 15px;
+            border: 1px solid #fff59d;
+        }
+
+        .conclusion {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .decorative {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .decorative span {
+            font-size: 3em;
+            margin: 0 15px;
+            opacity: 0.7;
+        }
+
+        .attention {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffa000;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Родительское собрание «Новые технологии в развитии речи»</h1>
+        <div class="decorative">
+            <span>🧠</span>
+            <span>💬</span>
+            <span>📚</span>
+        </div>
+    </div>
+
+    <div class="agenda">
+        <h2>Повестка дня:</h2>
+        <ol>
+            <li>Новые технологии в развитии речи</li>
+            <li>Практикум</li>
+        </ol>
+    </div>
+
+    <h2>Тема: «Применение метода синквейн в развитии речи детей старшего дошкольного возраста»</h2>
+
+    <div class="quote">
+        <p>Кто ясно мыслит - тот ясно излагает.</p>
+    </div>
+
+    <div class="problem">
+        <p>Дети испытывают трудности и плохо владеют навыками связной речи в достаточном объеме. Они испытывают трудности в звукопроизношении, не различают звуки на слух, для них характерны ошибки в словообразовании и словоизменении, низкий уровень словаря.</p>
+    </div>
+
+    <div class="method">
+        <p>Одним из таких эффективных методов развития речи ребенка, который позволяет быстро получить результат, является работа над созданием синквейна.</p>
+    </div>
+
+    <div class="rules">
+        <h3>Синквейн – это не обычное стихотворение написанное в соответствии с определёнными правилами:</h3>
+        <ol>
+            <li>1 строка – кто? что? 1 существительное</li>
+            <li>2 строка – какой? 2 прилагательных</li>
+            <li>3 строка – что делает? 3 глагола</li>
+            <li>4 строка – фраза из 4 слов</li>
+            <li>5 строка – ассоциации, возникающие, когда слышишь это слово</li>
+        </ol>
+        <p>Он напоминает елочку или пирамиду.</p>
+    </div>
+
+    <div class="benefits">
+        <h3>В чём же его эффективность и значимость?</h3>
+        <ul>
+            <li>изученный на занятии материал приобретает эмоциональную окраску, что способствует его более глубокому усвоению;</li>
+            <li>отрабатываются знания о частях речи, о предложении;</li>
+            <li>дети учатся соблюдать интонацию;</li>
+            <li>значительно активизируется словарный запас;</li>
+            <li>совершенствуется навык использования в речи синонимов, антонимов;</li>
+            <li>активизируется и развивается мыслительная деятельность;</li>
+            <li>совершенствуется умение высказывать собственное отношение к чему-либо, осуществляется подготовка к краткому пересказу;</li>
+            <li>дети учатся определять грамматическую основу предложений.</li>
+        </ul>
+    </div>
+
+    <div class="attention">
+        <p>При составлении синквейна нужно помнить, что необходимо составлять синквейн только на темы, хорошо известные детям и обязательно показывать образец. Применяя данную методику, у детей увеличится словарный запас, речь станет богаче, ярче, дети перестанут бояться высказывать свои мысли вслух, что является особенно важным для детей.</p>
+    </div>
+
+    <div class="workshop">
+        <h2>2. Практикум</h2>
+        <p>Сейчас мы научимся составлять синквейн.</p>
+        <p>Не забывайте правила составления синквейна.</p>
+
+        <div class="example">
+            <div class="example-title">1. Коллективное составление синквейна по предметной картинке. («Апельсин»)</div>
+            <p>- Что это?</p>
+            <p>- Апельсин.</p>
+            <p>Подберите два слова-признака.</p>
+            <p>- Какой апельсин?</p>
+            <p>- Круглый, оранжевый.</p>
+            <p>Подберите три слова-действия.</p>
+            <p>- Что делает апельсин?</p>
+            <p>- Висит, растёт, зреет.</p>
+            <p>- Составьте словосочетание или предложение, где вы выразите личное отношение автора в данном случае к предмету.</p>
+            <p>- Я люблю апельсин.</p>
+            <p>Теперь подберите слово-резюме, характеризующее суть предмета или объекта.</p>
+            <p>- Фрукт.</p>
+            <p><strong>Вопросы:</strong> Всем понятны правила составления синквейна?</p>
+            <p><strong>Вывод:</strong> Так мы с вами научились составлять синквейн по предметной картинке. Составляли мы коллективно. Я задавала вам вопросы, тем самым направляла вас.</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">2. Составление синквейна по индивидуальным картинкам. («Кошка, помидор, волк»)</div>
+            <p>Индивидуальная работа и проверка готовых синквейнов.</p>
+            <p><strong>Вопросы:</strong> Вам было интересно? Кто себя почувствовал настоящим поэтом или писателем? На ваш взгляд это формирует уверенность в себе, желание отвечать, думать, творить, рассуждать?</p>
+            <p><strong>Вывод:</strong> Сочинение синквейна – процесс творческий. Синквейн - это также способ контроля и самоконтроля (дети могут сравнить синквейны и оценивать их).</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">3. Коррекция и совершенствование готового синквейна.</div>
+            <p>Сейчас вы будете слушать готовый синквейн и попробуете разобраться, всё ли здесь правильно? («Белка»)</p>
+            <p>Белка.<br>
+                Рыжая, косолапая.<br>
+                Прыгает, скачет, воет.<br>
+                Мне нравится ловкая белка.<br>
+                Дикое животное.</p>
+            <p><strong>Вопросы:</strong> Вы мне помогли разобраться, исправили ошибки.</p>
+            <p>Как вы думаете? Это помогает развивать умение вслушиваться в обращённую речь, думать и быстро подбирать нужные слова?</p>
+            <p><strong>Вывод:</strong> Данный вид работы активизирует словарный запас детей. Учит детей быть внимательными и формирует лексическую готовность в подборе слов.</p>
+        </div>
+
+        <div class="example">
+            <div class="example-title">5. Составление синквейна по прослушанному рассказу или сказки.</div>
+            <p>Сейчас мы составим синквейны о героях русской народной сказки «Заюшкина избушка». Будем работать в группах. Первая группа будет составлять синквейн о зайчике, вторая о лисе, третья о петухе. («Заюшкина избушка»)</p>
+
+            <div class="group-work">
+                <p><strong>Зайчик.</strong><br>
+                    Слабый, трусливый.<br>
+                    Плачет, боится, просит (помощи).<br>
+                    Мне жалко зайчика.<br>
+                    Сказочный герой.</p>
+
+                <p><strong>Лиса.</strong><br>
+                    Хитрая, наглая.<br>
+                    Выгнала, обманула, обхитрила.<br>
+                    Лиса поступила плохо.<br>
+                    Сказочный герой.</p>
+
+                <p><strong>Петух.</strong><br>
+                    Смелый, отважный.<br>
+                    Спас, защитил, выгнал (лису).<br>
+                    Петух поступил смело.<br>
+                    Сказочный герой.</p>
+            </div>
+
+            <p><strong>Вопросы:</strong> Как думаете, работа в группах формирует навыки сотрудничества?</p>
+            <p><strong>Вывод:</strong> Синквейн учит находить и выделять в большом объеме информации главную мысль. В составлении синквейна каждый ребенок может реализовать свои интеллектуальные возможности.</p>
+        </div>
+    </div>
+
+    <div class="solutions">
+        <h2>Выступили:</h2>
+        <p><strong>Решили:</strong></p>
+        <p>1. Уделять большое внимание развитию речи ребенка, больше с ним общаться, беседать, пересказывать прочитанные произведения.</p>
+        <p>тв. воспитатели, родители</p>
+        <p><strong>Срок:</strong> учебный год</p>
+    </div>
+
+    <div class="conclusion">
+        <p>Совместными усилиями мы поможем детям развить красивую и грамотную речь! <span class="icon">💪</span></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зебра – пешеходный переход</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe6ee 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #ff66a3;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.6);
+        }
+
+        h2 {
+            color: #ff85b3;
+            margin: 20px 0 10px;
+            border-bottom: 2px dashed #ffc2d6;
+            padding-bottom: 5px;
+        }
+
+        .goal, .tasks, .progress {
+            background: #fffafb;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 2px solid #ffd1dc;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        li:before {
+            content: '🐾';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dialogue {
+            background: #fff0f5;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #ff66a3;
+        }
+
+        .kids-answer {
+            background: #fffaf0;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 10px 0;
+            font-style: italic;
+            border-left: 5px solid #ffcc99;
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .decorative-img {
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+            background: #ffd6e7;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .finger-game {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px dotted #ff66a3;
+        }
+
+        .conclusion {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(45deg, #fff0f5, #ffe6ee);
+            border-radius: 20px;
+        }
+
+        .medal {
+            width: 80px;
+            height: 80px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 15px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffb6c1 0%, #ffc2d6 100%);
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Конспект НОД в младшей группе</h1>
+        <div class="images">
+            <div class="decorative-img">🦓</div>
+            <div class="decorative-img">🚸</div>
+            <div class="decorative-img">🚦</div>
+        </div>
+    </div>
+
+    <h2>«Зебра – пешеходный переход»</h2>
+
+    <div class="goal">
+        <p><strong>Цель:</strong> Формирование представления о дорожном знаке «Пешеходный переход».</p>
+    </div>
+
+    <div class="tasks">
+        <strong>Задачи:</strong>
+        <ul>
+            <li>Закрепить знания детей о пешеходном переходе.</li>
+            <li>Построить из полосок пешеходный переход.</li>
+            <li>Закрепить знания детей, к чему может привести нарушение правил дорожного движения.</li>
+            <li>Продолжать обогащать словарный запас: <span class="highlight">проезжая часть</span>, <span class="highlight">пешеход</span>, <span class="highlight">пешеходный переход</span>, <span class="highlight">дорожные знаки</span>.</li>
+            <li>Развивать память, внимание, мышление, речь.</li>
+            <li>Воспитывать культуру поведения на дороге.</li>
+        </ul>
+    </div>
+
+    <div class="progress">
+        <h2>Ход занятия</h2>
+
+        <div class="dialogue">
+            <p><strong>Воспитатель:</strong> — Машины едут мимо нас и пешеходам не пройти. Машин так много в этот час, как дорогу перейти?</p>
+            <p>Мимо едут, вжик да вжик, То такси, то грузовик, То автобус, то маршрутка – На дорогу выйти жутко!</p>
+            <p>— Пешеходам нет пути! Как дорогу перейти?</p>
+        </div>
+
+        <p>Ребята, посмотрите, зебра не может перейти дорогу. Давайте ей поможем.</p>
+        <p>Давайте вспомним, где надо переходить проезжую часть? (по пешеходному переходу).</p>
+
+        <div class="kids-answer">Ответы детей</div>
+
+        <p>А на этой дороге нет пешеходного перехода. Давайте его построим. А поможет нам его построить кот.</p>
+
+        <div class="dialogue">
+            <p>Подошёл к дороге кот: — Нарисуем переход! Чёрно-белая дорожка От порожка до порожка.</p>
+        </div>
+
+        <p>Вспомним, из каких цветов состоит пешеходный переход.</p>
+        <div class="kids-answer">Ответы детей</div>
+
+        <p><strong>Воспитатель:</strong> Верно, ребята. Белая полосочка, черная полосочка.</p>
+        <p>Давайте построим из полосочек пешеходный переход.</p>
+
+        <div class="dialogue">
+            <p>Зебра ахнула: — Друзья! Полосатый он, как я! С той поры зовёт народ «Зеброй» этот переход.</p>
+        </div>
+
+        <p>Ребята, мы помогли зебре перейти дорогу.</p>
+        <p>Чтобы пешеходный переход был виден издалека, люди придумали дорожный знак «Пешеходный переход».</p>
+        <p>(воспитатель показывает дорожный знак)</p>
+
+        <div class="images">
+            <div class="decorative-img">🚶</div>
+            <div class="decorative-img">🚸</div>
+        </div>
+
+        <p>Давайте его рассмотрим. На нем изображены пешеходный переход и человек, идущий по нему.</p>
+
+        <div class="dialogue">
+            <p><strong>Воспитатель:</strong> — Ребята, будьте внимательны и дорогу переходите только по пешеходному переходу. Но и не забывайте при этом смотреть по сторонам. Убедитесь, что слева и справа нет движущегося транспорта! Через дорогу переходите только со взрослыми.</p>
+        </div>
+
+        <div class="finger-game">
+            <h3>Пальчиковая игра «Мы – водители»</h3>
+            <p>Едем, едем на машине <em>(Имитируют движение рулем)</em></p>
+            <p>Нажимаем на педаль <em>(Ногу сгибают, вытягивают)</em></p>
+            <p>Газ включаем, выключаем <em>(Рука к себе, от себя)</em></p>
+            <p>Смотрим пристально мы вдаль <em>(Приставляют ладонь ко лбу)</em></p>
+            <p>Дворники счищают капли <em>(Руки сгибают перед собой в локтях)</em></p>
+            <p>Вправо, влево. Чистота! <em>(Наклоняют руки вправо, влево)</em></p>
+            <p>Волосы ерошит ветер <em>(Над головой шевелят пальцами)</em></p>
+            <p>Ты – водитель хоть куда! <em>(Поднимают вверх большой палец рук)</em></p>
+        </div>
+
+        <p><strong>Воспитатель:</strong> Что мы сегодня с вами делали?</p>
+        <div class="kids-answer">Ответы детей</div>
+
+        <div class="dialogue">
+            <p>На дорожном знаке том,<br>
+                Человек идет пешком.<br>
+                Полосатые дорожки<br>
+                Постелили нам под ножки,<br>
+                Чтобы мы забот не знали<br>
+                И по ним вперед шагали.<br>
+                (пешеходный переход)</p>
+        </div>
+
+        <p><strong>Воспитатель:</strong> - Скажите, ребята, как мы с вами смогли помочь зебре. А как называется знак, который показывает, где можно перейти дорогу?</p>
+    </div>
+
+    <div class="conclusion">
+        <p>Вот и подошло наше занятие к концу, ребята, и я хочу вам подарить вот такие медальоны с изображением дорожного знака, чтобы вы его не забывали.</p>
+        <div class="medal">🚸</div>
+        <div class="medal">🚦</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квест-игра «Богатырский переполох»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #8e0000 0%, #ff6b6b 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #3d1c00;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ffd700" opacity="0.1" d="M50 0 L100 50 L50 100 L0 50 Z"></path></svg>');
+        }
+
+        .container {
+            max-width: 1000px;
+            background: #fff9e6;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 10px solid #ffd700;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd700, #ff6b6b);
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        h1 {
+            color: #8b0000;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.5);
+            font-family: 'Times New Roman', serif;
+        }
+
+        h2 {
+            color: #8b0000;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px double #ff6b6b;
+            font-family: 'Times New Roman', serif;
+        }
+
+        h3 {
+            color: #8b0000;
+            margin: 20px 0 12px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .shield {
+            display: inline-block;
+            background: #8b0000;
+            color: #ffd700;
+            padding: 10px 20px;
+            border-radius: 50%;
+            margin: 10px;
+            transform: rotate(-5deg);
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            border: 5px solid #ffd700;
+            font-weight: bold;
+        }
+
+        .goals {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 25px 0;
+        }
+
+        .goal-card {
+            flex-basis: 30%;
+            background: #ffe4b5;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
+            border: 2px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .goal-card::after {
+            content: '⚔️';
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 1.5em;
+            opacity: 0.3;
+        }
+
+        .materials {
+            background: #fff3cd;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px dashed #8b0000;
+        }
+
+        .work {
+            background: #f8d7da;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #8b0000;
+        }
+
+        .work ul {
+            padding-left: 30px;
+            list-style-type: none;
+        }
+
+        .work li {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .work li::before {
+            content: '🛡️';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .vocabulary {
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #8b0000;
+        }
+
+        .activity {
+            background: #d1ecf1;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #8b0000;
+        }
+
+        .character {
+            display: flex;
+            align-items: center;
+            background: #ffe4b5;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #ff6b6b;
+        }
+
+        .character-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .dialogue {
+            font-style: italic;
+            color: #8b0000;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.2);
+            border-left: 4px solid #ffd700;
+        }
+
+        .kids-answer {
+            background: rgba(139, 0, 0, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+            margin: 10px 0;
+            font-style: italic;
+            border-left: 4px solid #8b0000;
+        }
+
+        .game {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #8b0000;
+        }
+
+        .game-title {
+            font-weight: bold;
+            color: #8b0000;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .game-title::before {
+            content: '🎯';
+            margin-right: 10px;
+        }
+
+        .riddles {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #ffd700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .riddle {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #8b0000;
+        }
+
+        .conclusion {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(45deg, #ffe4b5, #ffd700);
+            border-radius: 15px;
+            font-weight: bold;
+            border: 2px solid #8b0000;
+        }
+
+        .treasure {
+            font-size: 3em;
+            animation: bounce 2s infinite;
+            display: inline-block;
+            margin: 15px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .decorative {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .decorative span {
+            font-size: 3em;
+            margin: 0 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .goal-card {
+                flex-basis: 100%;
+            }
+
+            .character {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .character-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Конспект проведения подвижных игр на улице в формате квест-игры</h1>
+        <div class="decorative">
+            <span>🛡️</span>
+            <span>⚔️</span>
+            <span>🏇</span>
+        </div>
+        <h1>«Богатырский переполох»</h1>
+    </div>
+
+    <div class="goals">
+        <div class="goal-card">
+            <h3>Образовательные:</h3>
+            <ul>
+                <li>Закрепить знания детей о богатырях – защитниках земли русской</li>
+                <li>Закрепить в речи детей названия элементов одежды богатырей.</li>
+                <li>Закрепить в речи детей названия оружия богатырей.</li>
+            </ul>
+        </div>
+
+        <div class="goal-card">
+            <h3>Развивающие:</h3>
+            <ul>
+                <li>развивать ловкость, меткость, координацию движений.</li>
+                <li>Учить соблюдать правила игры.</li>
+            </ul>
+        </div>
+
+        <div class="goal-card">
+            <h3>Воспитательные:</h3>
+            <ul>
+                <li>воспитывать чувства патриотизма: любовь к Родине, уважение к защитникам родины.</li>
+                <li>воспитывать в детях смелость, чувство товарищества, волю в преодолении препятствий.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="materials">
+        <h3>Материалы и оборудование:</h3>
+        <p>Сундучок, снежки мягкие, канат, маска «Бабы-Яги», буквы, медали, приз, посох «Бабы-Яги».</p>
+    </div>
+
+    <div class="work">
+        <h3>Предварительная работа:</h3>
+        <ul>
+            <li>Рассматривание репродукций картин о богатырях художников В. М Васнецова, И. Я. Билибина, К. А. Васильева.</li>
+            <li>Разучивание стихов, загадок, пословиц.</li>
+            <li>Рассматривание на иллюстрациях элементов одежды и оружия богатырей, конструирование из бумаги доспехов (меча, шлема, копья, стрелы).</li>
+        </ul>
+    </div>
+
+    <div class="vocabulary">
+        <h3>Словарная работа:</h3>
+        <p>богатыри, меч, шлем, копье.</p>
+    </div>
+
+    <div class="activity">
+        <h2>Ход деятельности:</h2>
+
+        <div class="character">
+            <div class="character-icon">🎭</div>
+            <div>
+                <p><strong>Скоморох:</strong> (одет в русский костюм) : выходит под музыку.</p>
+                <div class="dialogue">
+                    <p>Балагурю и пляшу,</p>
+                    <p>Да честной народ смешу!</p>
+                </div>
+                <p>Скоморошек пляшет перед зрителями и корчит смешные рожицы.</p>
+                <div class="dialogue">
+                    <p>Кто не улыбнется,</p>
+                    <p>Тот о пень споткнется!</p>
+                </div>
+                <p>Скоморошек грозит зрителям пальцем.</p>
+                <div class="dialogue">
+                    <p>Бубенцы – на колпаке,</p>
+                </div>
+                <p>Скоморошек бьет рукой по бубенчикам на шапке.</p>
+                <div class="dialogue">
+                    <p>Балалаечка – в руке!</p>
+                </div>
+                <p>Скоморошек делает движения, как будто играет на балалайке.</p>
+                <div class="dialogue">
+                    <p>И наряд в горошек!</p>
+                </div>
+                <p>Скоморошек кружится перед зрителями, расставив руки в стороны.</p>
+                <div class="dialogue">
+                    <p>Вот так скоморошек!</p>
+                </div>
+                <div class="dialogue">
+                    <p>Ух-ты издалека - далеко пришел я к вам, да не просто в гости, а отправили меня искать по всей России силу богатырскую. Давным-давно нашу Родину от врагов защищали богатыри. Слава о их доблести, смелости и отваге дошла в сказках, былинах и песнях до наших дней. А ребята, а вы что-нибудь знаете про богатырей, каким должен быть настоящий богатырь?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="kids-answer">
+            <p>Дети отвечают: Он должен быть сильным, смелым, умным, добрым. Богатырь всегда сражается с темными силами и делает только хорошие поступки.</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Ребята, а среди вас есть настоящие богатыри. Давайте проверим.</p>
+            <p>А искать силу богатырскую мне поможет вот этот сундучок, сундучок-то не простой, а с заданиями. Готовы? Не боитесь не справиться с заданиями?</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Зачитывает задание из сундучка. Здесь написано найди белое на белом,</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Что это такое, как вы думаете ребята?</p>
+        </div>
+
+        <div class="game">
+            <div class="game-title">Игра: «Найди белое на белом»</div>
+            <p>Находят на участке белые предметы, под каждым предметом буква. Нужно сложить слово ребята складывают из букв слово и читают хором. Салки.</p>
+        </div>
+
+        <div class="game">
+            <div class="game-title">Игра: «Салки со снежками»</div>
+            <p>Количество участников: от 6 человек</p>
+            <p>Что нужно для игры: снежки</p>
+            <p>Игра проводится на площадке 30 х 15 м. В ее центре чертят небольшой круг — место для водящего и его помощников. Выбирают водящего, остальные игроки разбегаются по площадке. Задача водящего — осалить заготовленными снежками игроков, которые бегают по площадке. Осаленные игроки становятся помощниками водящего, встают в круг и получают право тоже осаливать игроков за кругом. Таким образом, по ходу игры постепенно уменьшается число игроков, свободно бегающих по площадке. Игра заканчивается, когда остается один не осаленный игрок. Он — победитель и может стать водящим при повторной игре.</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Ух, какая замечательная игра! Правда, ребята? Вы не устали? Тогда я хочу научить вас своей любимой забаве. Она называется</p>
+        </div>
+
+        <div class="game">
+            <div class="game-title">«Перетяни канат»</div>
+            <p>Делятся на две команды. По сигналу команды стремятся перетянуть канат за контрольную линию. Побеждает команда, перетянувшая канат за контрольную линию. Выполняют три попытки.</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Собирайтесь-ка в дружины славные! Покажите свою силушку богатырскую, да удаль молодецкую! Позабавьте-ка вы нас рукою твердою, да глазом зорким!</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Скажите, а какие у богатырей были враги?</p>
+        </div>
+
+        <div class="kids-answer">
+            <p>(Дети перечисляют)</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: А кто больше всех досаждает, конечно, «Баба-Яга».</p>
+            <p>Давайте поиграем в игру «Баба-Яга», посмотрим какая «Баба-Яга» смелая, да умелая. Выходит ребенок в шапочке «Бабы-Яги».</p>
+        </div>
+
+        <div class="game">
+            <div class="game-title">Игра: «Баба Яга»</div>
+            <p>Рисуется круг. Баба Яга берет в руки ветку – помело и становится в центр круга. Ребята бегают по кругу и дразнят:</p>
+            <div class="dialogue">
+                <p>Бабка Ёжка - костяная ножка,</p>
+                <p>С печки упала, ножку сломала</p>
+                <p>А потом и говорит:</p>
+                <p>-У меня нога болит.</p>
+                <p>Пошла она на улицу,</p>
+                <p>Раздавила курицу.</p>
+                <p>Пошла на базар</p>
+                <p>Раздавила самовар.</p>
+                <p>Пошла на лужайку</p>
+                <p>Испугала зайку.</p>
+            </div>
+            <p>Баба Яга скачет из круга на одной ноге и старается коснуться ребят своим помелом.</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Молодцы и с этим заданием вы справились. Ребята, а ведь богатыри не только сильные и смелые, они ведь еще и умные. А знаете, как они тренируют свой ум? Они отгадывают загадки. А вы любите? Ну что же тогда слушайте и отгадывайте (оружие и одежда богатырей.)</p>
+        </div>
+
+        <div class="riddles">
+            <h3>ЗАГАДКИ</h3>
+
+            <div class="riddle">
+                <p>Оружие это трудно поднять,</p>
+                <p>Не просто поднять, а в руке удержать,</p>
+                <p>Снести им легко было голову с плеч,</p>
+                <p>Ну что догадались? Конечно же…</p>
+                <div class="shield">меч</div>
+            </div>
+
+            <div class="riddle">
+                <p>Железная шапка с острым концом,</p>
+                <p>А спереди клюв навис над лицом…</p>
+                <div class="shield">шлем</div>
+            </div>
+
+            <div class="riddle">
+                <p>Рубашку такую не вяжут, не шьют,</p>
+                <p>Её из колечек железных плетут…</p>
+                <div class="shield">кольчуга</div>
+            </div>
+
+            <div class="riddle">
+                <p>Чтоб грудь защитить от ударов врага,</p>
+                <p>Уж вы это знаете наверняка,</p>
+                <p>На левой руке у героя висит,</p>
+                <p>Тяжелый, блестящий, раскрашенный…</p>
+                <div class="shield">щит</div>
+            </div>
+
+            <p>Дети отгадывают загадки и прикрывают фишками картинки с ответом.</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Ну, ребята, какие вы молодцы, сильные и смелые и умелые. Теперь я знаю, что не оскудела земля русская силой богатырской. Со всеми заданиями вы справились и по праву заслуживаете звание Богатырей! А теперь получите награду. Нужно сложить пазл и вы узнаете, где находится клад-сюрприз.</p>
+            <p>(По завершению отдается последний пазл- разгадка). Команды складывают общую картинку из частей и идут искать свой клад –приз.</p>
+            <p>(Дети находят приз.)</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Ну, что ж друзья - богатыри, прощаться будем, наш праздник долго не забудем?</p>
+        </div>
+
+        <div class="kids-answer">
+            <p>Дети: Да.</p>
+        </div>
+
+        <div class="dialogue">
+            <p>Скоморох: Я буду с вами новой встречи ждать, а вам желаю не скучать и мышцы ваши подкачать.</p>
+        </div>
+
+        <p>Скоморох убегают под веселую музыку.</p>
+    </div>
+
+    <div class="conclusion">
+        <p>Богатырские забавы удались на славу!</p>
+        <div class="treasure">🏆</div>
+        <div class="treasure">🛡️</div>
+        <div class="treasure">⚔️</div>
+    </div>
+</div>
+</body>
+</html>
